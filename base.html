@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Flask Demo{% endblock %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            margin-right: 1rem;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        .flash-messages {
+            margin: 1rem 0;
+        }
+        .flash-message {
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-radius: 3px;
+        }
+        .flash-message.success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        .flash-message.error {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+        .product-card {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+        }
+        form {
+            max-width: 400px;
+        }
+        form div {
+            margin-bottom: 1rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        button {
+            background-color: #333;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>FlashGates</h1>
+        </div>
+    </header>
+    <div class="container">
+        <button id="btnesr">Esercitati</button>
+        <button id="btncr">Crea</button>
+    </div>
+    <footer class="container">
+        <p>&copy; 2025 Flask Demo App</p>
+    </footer>
+</body>
+</html>
