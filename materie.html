@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+    <h2>Scegli una materia</h2>
+    <div class="materie-list">
+        {% if materie %}
+            {% for materia in materie %}
+                <a href="{{ url_for('esercitati_materia', materia=materia) }}" class="materia-button">
+                    {{ materia }}
+                </a>
+            {% endfor %}
+        {% else %}
+            <p>Nessuna materia disponibile. Crea prima delle flashcard!</p>
+        {% endif %}
+    </div>
+{% endblock %}

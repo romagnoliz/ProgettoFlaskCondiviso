@@ -1,11 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <div>Esercitazione</div>
-</head>
-<body>
-    <div id="domande">
-        
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Esercitati con {{ materia }}</h2>
+    <div class="flashcard-container">
+        {% if flashcard %}
+            {% for card in flashcard %}
+                <div class="flashcard">
+                    <div class="domanda">
+                        <h3>Domanda:</h3>
+                        <p>{{ card.domanda }}</p>
+                    </div>
+                    <div class="risposta" style="display: none;">
+                        <h3>Risposta:</h3>
+                        <p>{{ card.risposta }}</p>
+                    </div>
+                    <button class="mostra-risposta">Mostra Risposta</button>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Nessuna flashcard disponibile per questa materia.</p>
+        {% endif %}
     </div>
-</body>
-</html>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        document.querySelectorAll('.mostra-risposta').forEach(button => {
+            button.addEventListener('click', function() {
+                const risposta = this.previousElementSibling;
+                if (risposta.style.display === 'none') {
+                    risposta.style.display = 'block';
+                    this.textContent = 'Nascondi Risposta';
+                } else {
+                    risposta.style.display = 'none';
+                    this.textContent = 'Mostra Risposta';
+                }
+            });
+        });
+    </script>
+{% endblock %}
