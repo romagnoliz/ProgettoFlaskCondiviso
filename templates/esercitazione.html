@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Esercitati</h1>
+
+    <div class="filtro-materie">
+        <label for="materia">Filtra per materia:</label>
+        <select id="materia" onchange="filtraFlashcards()">
+            <option value="tutte">Tutte le materie</option>
+            {% for materia in materie %}
+            <option value="{{ materia }}">{{ materia }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="flashcards">
+        {% for card in flashcards %}
+        <div class="flashcard" data-materia="{{ card.materia }}">
+            <div class="domanda">{{ card.domanda }}</div>
+            <div class="risposta" style="display:none;">{{ card.risposta }}</div>
+            <button onclick="mostraRisposta(this)">Mostra risposta</button>
+        </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        function mostraRisposta(btn) {
+            const risposta = btn.previousElementSibling;
+            risposta.style.display = risposta.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function filtraFlashcards() {
+            const materiaSelezionata = document.getElementById('materia').value;
+            const flashcards = document.querySelectorAll('.flashcard');
+            
+            flashcards.forEach(card => {
+                if(materiaSelezionata === 'tutte' || card.dataset.materia === materiaSelezionata) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+{% endblock %}

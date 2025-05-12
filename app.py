@@ -1,57 +1,35 @@
 from flask import Flask, render_template, request, redirect, url_for
-import os
-from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
-app.config['DATA_FOLDER'] = 'data'
 
-
+flashcards_db = [
+    {"materia": "Matematica", "domanda": "2+2", "risposta": "4"},
+    {"materia": "Matematica", "domanda": "5*5", "risposta": "25"},
+    {"materia": "Storia", "domanda": "Anno scoperta America", "risposta": "1492"},
+    {"materia": "Scienze", "domanda": "Formula acqua", "risposta": "H2O"}
+]
 
 @app.route('/')
 def home():
     return render_template('home.html')
 
-@app.route('/crea', methods=['GET', 'POST'])
+@app.route('/creazione', methods=['GET', 'POST'])
 def crea():
     if request.method == 'POST':
-        materia = request.form['materia']
-        domanda = request.form['domanda']
-        risposta = request.form['risposta']
-
-        filename = secure_filename(f"{materia}.txt")
-        filepath = os.path.join(app.config['DATA_FOLDER'], filename)
-        
-        with open(filepath, 'a', encoding='utf-8') as f:
-            f.write(f"{domanda}|||{risposta}\n")
-            
-        return render_template('crea.html', success=True)
+        nuova_flashcard = {
+            "materia": request.form.get('materia'),
+            "domanda": request.form.get('domanda'),
+            "risposta": request.form.get('risposta')
+        }
+        flashcards_db.append(nuova_flashcard)
+        return redirect(url_for('home'))
     
-    return render_template('crea.html', success=False)
+    return render_template('creazione.html')
 
 @app.route('/esercitati')
 def esercitati():
-    materie = []
-    for filename in os.listdir(app.config['DATA_FOLDER']):
-        if filename.endswith('.txt'):
-            materie.append(filename[:-4])
-    
-    return render_template('materie.html', materie=materie)
-
-@app.route('/esercitati/<materia>')
-def esercitati_materia(materia):
-    filename = secure_filename(f"{materia}.txt")
-    filepath = os.path.join(app.config['DATA_FOLDER'], filename)
-    
-    flashcard = []
-    try:
-        with open(filepath, 'r', encoding='utf-8') as f:
-            for line in f:
-                if '|||' in line:
-                    domanda, risposta = line.strip().split('|||')
-                    flashcard.append({'domanda': domanda, 'risposta': risposta})
-
-    
-    return render_template('esercitati.html', materia=materia, flashcard=flashcard)
+    materie = list(set(card['materia'] for card in flashcards_db))
+    return render_template('esercitazione.html', materie=materie, flashcards=flashcards_db)
 
 if __name__ == '__main__':
     app.run(debug=True)

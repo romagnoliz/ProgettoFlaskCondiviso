@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Flashcard App</h1>
+    <div class="buttons">
+        <a href="{{ url_for('crea') }}" class="btn">Crea Flashcard</a>
+        <a href="{{ url_for('esercitati') }}" class="btn">Esercitati</a>
+    </div>
+{% endblock %}
