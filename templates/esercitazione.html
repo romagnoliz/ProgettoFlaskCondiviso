@@ -5,41 +5,43 @@
 
     <div class="filtro-materie">
         <label for="materia">Filtra per materia:</label>
-        <select id="materia" onchange="filtraFlashcards()">
-            <option value="tutte">Tutte le materie</option>
+        <select id="materia">
+            <option value="all">Tutte le materie</option>
             {% for materia in materie %}
             <option value="{{ materia }}">{{ materia }}</option>
             {% endfor %}
         </select>
     </div>
-
     <div class="flashcards">
         {% for card in flashcards %}
         <div class="flashcard" data-materia="{{ card.materia }}">
-            <div class="domanda">{{ card.domanda }}</div>
+            <div class="card-header">
+                <span class="materia-badge">{{ card.materia }}</span>
+                <div class="domanda">{{ card.domanda }}</div>
+            </div>
             <div class="risposta" style="display:none;">{{ card.risposta }}</div>
-            <button onclick="mostraRisposta(this)">Mostra risposta</button>
+            <button onclick="toggleRisposta(this)">Mostra risposta</button>
         </div>
         {% endfor %}
     </div>
 
     <script>
-        function mostraRisposta(btn) {
-            const risposta = btn.previousElementSibling;
-            risposta.style.display = risposta.style.display === 'none' ? 'block' : 'none';
-        }
 
-        function filtraFlashcards() {
-            const materiaSelezionata = document.getElementById('materia').value;
-            const flashcards = document.querySelectorAll('.flashcard');
+        document.getElementById('materia').addEventListener('change', function() {
+            const materia = this.value;
+            const cards = document.querySelectorAll('.flashcard');
             
-            flashcards.forEach(card => {
-                if(materiaSelezionata === 'tutte' || card.dataset.materia === materiaSelezionata) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
+            cards.forEach(card => {
+                card.style.display = (materia === 'all' || card.dataset.materia === materia) 
+                    ? 'block' 
+                    : 'none';
             });
+        });
+
+        function toggleRisposta(button) {
+            const risposta = button.previousElementSibling;
+            risposta.style.display = risposta.style.display === 'none' ? 'block' : 'none';
+            button.textContent = risposta.style.display === 'none' ? 'Mostra risposta' : 'Nascondi risposta';
         }
     </script>
 {% endblock %}

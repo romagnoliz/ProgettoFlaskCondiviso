@@ -3,9 +3,20 @@
 {% block content %}
     <h2>Crea nuova flashcard</h2>
     <form method="POST">
-        <input type="text" name="materia" placeholder="Materia" required>
-        <textarea name="domanda" placeholder="Domanda" required></textarea>
-        <textarea name="risposta" placeholder="Risposta" required></textarea>
+        <label for="materia">Materia:</label>
+        <select name="materia" id="materia" required>
+            <option value="" disabled selected>Seleziona una materia</option>
+            {% for materia in materie %}
+            <option value="{{ materia }}">{{ materia }}</option>
+            {% endfor %}
+        </select>
+        
+        <label for="domanda">Domanda:</label>
+        <textarea name="domanda" placeholder="Inserisci la domanda" required></textarea>
+        
+        <label for="risposta">Risposta:</label>
+        <textarea name="risposta" placeholder="Inserisci la risposta" required></textarea>
+        
         <button type="submit" class="btn">Salva</button>
     </form>
 {% endblock %}
