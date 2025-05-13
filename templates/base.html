@@ -1,78 +1,158 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Flashcard App</title>
+    <head>
+        <meta charset="UTF-8">
+        <title>Flashcard App</title>
+    </head>
+        <body>
+            <div class="container">
+                {% block content %}{% endblock %}
+            </div>
+    </body>
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: burlywood;
+        text-align: center;
+    }
 
-</head>
-<body>
-    <div class="container">
-        {% block content %}{% endblock %}
-    </div>
-</body>
-<style>
-    body {
-    font-family: Arial, sans-serif;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
+    label{
+        font-weight: bold;
+        font-style: oblique;
+    }
 
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background: #4CAF50;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    margin: 10px;
-    border: none;
-    cursor: pointer;
-}
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background: #4CAF50;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        margin: 10px;
+        border: none;
+        cursor: pointer;
+        font-size: 200%;
+        font-weight: bold;
+        font-family: "Imprint MT Shadow";
+    }
 
-.flashcard {
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: 5px;
-}
+    .btn-home{
+        display: inline-block;
+        padding: 10px 20px;
+        background: darkred;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        margin: 10px;
+        border: none;
+        cursor: pointer;
+        font-size: 200%;
+        font-weight: bold;
+        font-family: "Imprint MT Shadow";
+    }
 
-.filtro-materie {
-    margin: 20px 0;
-}
+    #btn-risposta{
+        display: inline-block;
+        padding: 10px 20px;
+        background: cornflowerblue;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        margin: 10px;
+        border: none;
+        cursor: pointer;
+        font-size: 50%;
+        font-weight: bold;
+    }
 
-.filtro-materie select {
-    padding: 8px;
-    border-radius: 4px;
-    margin-left: 10px;
-}
-select {
-    padding: 8px 12px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-    margin-bottom: 15px;
-}
+    #title{
+        font-size: 500%;
+        font-family: "Felix Titling";
+    }
 
-.materia-badge {
-    display: inline-block;
-    background-color: #4CAF50;
-    color: white;
-    padding: 3px 8px;
-    border-radius: 12px;
-    font-size: 0.8em;
-    margin-bottom: 8px;
-}
+    .card-header{
+        font-size: 125%;
+    }
 
-.card-header {
-    margin-bottom: 10px;
-}
+    .flashcard {
+        border: 1px solid #ddd;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 5px;
+    }
 
-.flashcard {
-    position: relative;
-    padding: 15px;
-    margin-bottom: 20px;
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-</style>
+    .filtro-materie {
+        margin: 20px 0;
+    }
+
+    .filtro-materie select {
+        padding: 8px;
+        border-radius: 4px;
+        margin-left: 10px;
+    }
+    select {
+        padding: 8px 12px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        margin-bottom: 15px;
+    }
+
+    .materia-badge {
+        display: inline-block;
+        background-color: #4CAF50;
+        color: white;
+        padding: 3px 8px;
+        border-radius: 12px;
+        font-size: 0.8em;
+        margin-bottom: 8px;
+    }
+
+    .card-header {
+        margin-bottom: 10px;
+    }
+
+    .flashcard {
+        position: relative;
+        padding: 15px;
+        margin-bottom: 20px;
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    #creation{
+        font-size: 129%;
+        text-align: center;
+    }
+
+    h2{
+        font-size: 300%;
+        font-family: Rubik;
+    }
+
+    textarea{
+        height: 18px;
+        text-align: center;
+        font-family: Ubuntu;
+    }
+
+    select{
+        font-family: Ubuntu;
+    }
+
+    #lab-mat{
+        font-size: 150%;
+
+    }
+
+    .flashcard{
+        font-size: 200%;
+        background-color: blanchedalmond;
+        border: black ;
+        width: 100%;
+    }
+
+    </style>
 </html>

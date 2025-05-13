@@ -2,7 +2,7 @@
 
 {% block content %}
     <h2>Crea nuova flashcard</h2>
-    <form method="POST">
+    <form id="creation" method="POST">
         <label for="materia">Materia:</label>
         <select name="materia" id="materia" required>
             <option value="" disabled selected>Seleziona una materia</option>
@@ -10,13 +10,18 @@
             <option value="{{ materia }}">{{ materia }}</option>
             {% endfor %}
         </select>
-        
-        <label for="domanda">Domanda:</label>
-        <textarea name="domanda" placeholder="Inserisci la domanda" required></textarea>
-        
-        <label for="risposta">Risposta:</label>
-        <textarea name="risposta" placeholder="Inserisci la risposta" required></textarea>
-        
+        <br>
+
+        <div>
+            <label for="domanda">Domanda:</label>
+            <textarea name="domanda" placeholder="Inserisci la domanda" required></textarea>
+            <br>
+            <br>
+            <label for="risposta">Risposta:</label>
+            <textarea name="risposta" placeholder="Inserisci la risposta" required></textarea>
+        </div>
+        <br>
         <button type="submit" class="btn">Salva</button>
+         <a href="{{ url_for('home') }}" class="btn-home">Home</a>
     </form>
 {% endblock %}

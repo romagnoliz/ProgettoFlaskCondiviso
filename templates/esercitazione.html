@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Esercitati</h1>
+    <h2>Esercitati</h2>
 
     <div class="filtro-materie">
-        <label for="materia">Filtra per materia:</label>
+        <label id="lab-mat" for="materia">Filtra per materia:</label>
         <select id="materia">
             <option value="all">Tutte le materie</option>
             {% for materia in materie %}
@@ -20,9 +20,10 @@
                 <div class="domanda">{{ card.domanda }}</div>
             </div>
             <div class="risposta" style="display:none;">{{ card.risposta }}</div>
-            <button onclick="toggleRisposta(this)">Mostra risposta</button>
+            <button id="btn-risposta" onclick="toggleRisposta(this)">Mostra risposta</button>
         </div>
         {% endfor %}
+         <a href="{{ url_for('home') }}" class="btn-home">Home</a>
     </div>
 
     <script>
