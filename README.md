@@ -5,13 +5,10 @@
 - templates -> Cartella contenente tutti i template HTML
     - base.html -> Template base con layout comune per tutte le pagine HTML (solitamente header, footer, etc..)
     - home.html -> Homepage della webapp
-    - product_detail.html -> Pagina dettaglio del prodotto selezionato
-    - contact.html -> Form di contatto
-    - login.html -> Pagina di login
-    - dashboard.html -> Dashboard (visibile solo da admin)
-    - 404.html -> Pagina errore 404
-    - 500.html -> Pagina errore 500
-
+    - esercitazione.html -> Pagina dettaglio del prodotto selezionato
+    - craezione.html -> Creazione FlashCard
+    - materie.html -> Visualizzazione FlashCard
+    - 
 ## Concetti proposti
 - Routing: Definizione di percorsi URL con @app.route()
 - Template con Jinja2: Ereditarietà dei template, cicli, condizioni
