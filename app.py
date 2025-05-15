@@ -20,7 +20,7 @@ def crea():
             "risposta": request.form.get('risposta')
         }
         flashcards_db.append(nuova_flashcard)
-        return redirect(url_for('salva_flashcards'))  # Dopo la creazione, salva la flashcard
+        return redirect(url_for('salva_flashcards'))  # dopo la creazione, salva la flashcard
 
     return render_template('creazione.html', materie=MATERIE)
 
@@ -41,7 +41,7 @@ def salva_flashcards():
             f.write(f"Domanda: {domanda}\n")
             f.write(f"Risposta: {risposta}\n\n")
 
-        return redirect(url_for('home'))  # Dopo il salvataggio, torna alla home
+        return redirect(url_for('home'))  # dopo il salvataggio va in home
 
 
 @app.route('/esercitati')
@@ -63,7 +63,7 @@ def esercitati():
                 elif line.startswith("Risposta:"):
                     flashcard["risposta"] = line.replace("Risposta: ", "")
                 elif line == "":
-                    if flashcard:  # Se la flashcard è completa, aggiungila alla lista
+                    if flashcard:  # se la flashcard è completa aggiunge alla lista
                         flashcards_salvate.append(flashcard)
                         flashcard = {}
 
