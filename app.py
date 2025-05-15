@@ -5,11 +5,9 @@ app = Flask(__name__)
 MATERIE = ["Informatica", "Sistemi e Reti", "TPSIT", "Matematica"]
 flashcards_db = []
 
-
 @app.route('/')
 def home():
     return render_template('home.html')
-
 
 @app.route('/crea', methods=['GET', 'POST'])
 def crea():
@@ -23,7 +21,6 @@ def crea():
         return redirect(url_for('salva_flashcards'))  # dopo la creazione, salva la flashcard
 
     return render_template('creazione.html', materie=MATERIE)
-
 
 @app.route('/salva', methods=['GET', 'POST'])
 def salva_flashcards():
@@ -42,7 +39,6 @@ def salva_flashcards():
             f.write(f"Risposta: {risposta}\n\n")
 
         return redirect(url_for('home'))  # dopo il salvataggio va in home
-
 
 @app.route('/esercitati')
 def esercitati():
@@ -71,7 +67,6 @@ def esercitati():
         flashcards_salvate = ["Nessuna flashcard salvata!"]
 
     return render_template('esercitazione.html', materie=MATERIE, flashcards=flashcards_salvate)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
